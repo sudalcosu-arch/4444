@@ -1,0 +1,26 @@
+[build]
+command = "pnpm install --frozen-lockfile && pnpm build"
+publish = "dist/public"
+functions = "netlify/functions"
+
+[build.environment]
+NODE_VERSION = "20"
+NODE_ENV = "production"
+PNPM_VERSION = "9.0.0"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[context.production]
+command = "pnpm install --frozen-lockfile && pnpm build"
+publish = "dist/public"
+
+[context.deploy-preview]
+command = "pnpm install --frozen-lockfile && pnpm build"
+publish = "dist/public"
+
+[context.branch-deploy]
+command = "pnpm install --frozen-lockfile && pnpm build"
+publish = "dist/public"
